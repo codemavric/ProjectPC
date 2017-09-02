@@ -32,10 +32,10 @@ namespace ProjectPC.Models
             public double       Price1              { get; set; }
 
         [Display(Name = "Price"), DataType(DataType.Currency)]
-            public double       Price2              { get; set; }
+            public double?       Price2              { get; set; }
 
         [Display(Name = "Price"), DataType(DataType.Currency)]
-            public double       Price3              { get; set; }
+            public double?       Price3              { get; set; }
 
         [Display(Name = "Product Image")]
             public byte[]       Image               { get; set; }

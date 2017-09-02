@@ -20,6 +20,13 @@ namespace ProjectPC.Controllers
             return View(db.Categories.ToList());
         }
 
+        public ActionResult Browse(int id)
+        {
+            var categoryModel = db.Categories.Include("Products").Single(p => p.CategoryID == id);
+
+            return View(categoryModel);
+        }
+
         // GET: Categories/Details/5
         public ActionResult Details(int? id)
         {

@@ -119,6 +119,7 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Categories\Browse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -127,6 +128,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709012337160_InitialCreate.cs" />
+    <Compile Include="Migrations\201709012337160_InitialCreate.Designer.cs">
+      <DependentUpon>201709012337160_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709020000403_AddedProductListToCategory.cs" />
+    <Compile Include="Migrations\201709020000403_AddedProductListToCategory.Designer.cs">
+      <DependentUpon>201709020000403_AddedProductListToCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709020019199_PricingNullable.cs" />
+    <Compile Include="Migrations\201709020019199_PricingNullable.Designer.cs">
+      <DependentUpon>201709020019199_PricingNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />
@@ -152,6 +166,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709012337160_InitialCreate.resx">
+      <DependentUpon>201709012337160_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709020000403_AddedProductListToCategory.resx">
+      <DependentUpon>201709020000403_AddedProductListToCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709020019199_PricingNullable.resx">
+      <DependentUpon>201709020019199_PricingNullable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
