@@ -16,5 +16,7 @@ namespace ProjectPC.Models
 
         [Required, Display(Name ="Category Type")]
         public string       CategoryType        { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }

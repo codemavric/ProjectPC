@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectPC.Models;
+using System.IO;
 
 namespace ProjectPC.Controllers
 {
@@ -48,8 +49,14 @@ namespace ProjectPC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ProductName,ProductDescription,Size1,Size2,Size3,Price1,Price2,Price3,Image,ImageType,CategoryID")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,ProductName,ProductDescription,Size1,Size2,Size3,Price1,Price2,Price3,Image,ImageType,CategoryID")] Product product, HttpPostedFileBase file)
         {
+
+            if (file != null && file.ContentLength > 0)
+            {
+                product.ImageType = Path.GetExtension(file.FileName);
+                product.Image = ConvertToBytes(file);
+            }
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -61,6 +68,23 @@ namespace ProjectPC.Controllers
             return View(product);
         }
 
+        public byte[] ConvertToBytes(HttpPostedFileBase file)
+        {
+            BinaryReader reader = new BinaryReader(file.InputStream);
+            return reader.ReadBytes((int)file.ContentLength);
+        }
+
+        public FileStreamResult RenderImage(int id)
+        {
+            MemoryStream ms = null;
+
+            var item = db.Products.FirstOrDefault(p => p.ProductID == id);
+            if (item != null)
+            {
+                ms = new MemoryStream(item.Image);
+            }
+            return new FileStreamResult(ms, item.ImageType);
+        }
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
