@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjectPC.Models;
 
-namespace ProjectPC.Controllers
+namespace ProjectPC.Areas.Admin.Controllers
 {
     public class CategoriesController : Controller
     {
@@ -25,6 +25,11 @@ namespace ProjectPC.Controllers
             var categoryModel = db.Categories.Include("Products").Single(p => p.CategoryID == id);
 
             return View(categoryModel);
+        }
+
+        public ActionResult ProductPopup()
+        {
+            return View();
         }
 
         // GET: Categories/Details/5
