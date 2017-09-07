@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using ProjectPC.Models;
 using System.IO;
 
-namespace ProjectPC.Controllers
+namespace ProjectPC.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
     {
