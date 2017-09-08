@@ -27,11 +27,6 @@ namespace ProjectPC.Areas.Admin.Controllers
             return View(categoryModel);
         }
 
-        public ActionResult ProductPopup()
-        {
-            return View();
-        }
-
         // GET: Categories/Details/5
         public ActionResult Details(int? id)
         {
